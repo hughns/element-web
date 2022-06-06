@@ -24,4 +24,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: hughns/element-web-oidc-playground:${{ github.sha }}
+          tags: ghcr.io/hughns/element-web-oidc-playground:${{ github.sha }}
