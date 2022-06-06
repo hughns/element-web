@@ -2,7 +2,7 @@ name: Build and publish
 on:
   pull_request: { }
   push:
-    branches: [ master ]
+    branches: [ oidc-playground ]
 jobs:
   build:
     name: "Build and publish to docker"
@@ -22,4 +22,4 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: hughns/element-web:${{ github.sha }}
+          tags: hughns/element-web-oidc-playground:${{ github.sha }}
