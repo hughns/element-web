@@ -13,6 +13,8 @@ jobs:
         run: echo "::set-output name=datetime::$(date -u +'%Y-%m-%dT%H_%M_%SZ')"
           
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       -
         name: Login to GitHub Container Registry
