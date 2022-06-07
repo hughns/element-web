@@ -7,6 +7,11 @@ jobs:
     name: "Build and publish to docker"
     runs-on: ubuntu-latest
     steps:
+      -
+        name: Get current timestamp
+        id: timestamp
+        run: echo "::set-output name=datetime::$(date -u +'%Y-%m-%dT%H_%M_%SZ')"
+          
       - uses: actions/checkout@v3
 
       -
@@ -22,4 +27,4 @@ jobs:
         with:
           context: . # need to use full checkout from above due to way that react-sdk and js-sdk packages are linked in
           push: true
-          tags: ghcr.io/hughns/element-web-oidc-playground:$(date -u +'%Y-%m-%dT%H_%M_%SZ')
+          tags: ghcr.io/hughns/element-web-oidc-playground:${{ steps.timestamp.outputs.datetime }}
