@@ -8,8 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
 
       -
         name: Login to GitHub Container Registry
@@ -22,6 +20,6 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v3
         with:
-          context: .
+          context: . # need to use full checkout from above due to way that react-sdk and js-sdk packages are linked in
           push: true
           tags: ghcr.io/hughns/element-web-oidc-playground:$(date -u +'%Y-%m-%dT%H_%M_%SZ')
